@@ -1,6 +1,6 @@
-// import CustomInput from "@components/forms/custom-input.component";
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchCustomers } from "@lib/actions/customer.actions";
 import CustomerModal from "@components/modals/customer-modal.component";
 import CustomerRowItem from "@components/global/customer-row-item.component";
 import { Icon } from "@components/global/icon.component";
@@ -12,6 +12,17 @@ export default function CustomersPage() {
     setCustomerModalOpen((state) => !state);
   };
 
+  useEffect(() => {
+    const getdata = async () => {
+      const customers = await fetchCustomers();
+      console.log(customers);
+    };
+    getdata();
+  }, []);
+
+  const customers = await fetchCustomers();
+  console.log(customers);
+
   return (
     <>
       <div className="absolute left-[220px] top-12 right-0 bottom-0 text-black02">
@@ -22,7 +33,7 @@ export default function CustomersPage() {
               <button
                 type="button"
                 className="text-white font-semibold px-4 py-1.5 rounded-l rounded-r-sm bg-green02 transition-all hover:bg-green03"
-                onClick={toggleCustomerModal}
+                // onClick={toggleCustomerModal}
               >
                 New client
               </button>

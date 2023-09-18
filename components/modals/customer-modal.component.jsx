@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { addNewCustomer } from "@lib/actions/customer.actions";
 import { Icon } from "@components/global/icon.component";
 import CustomInput from "../forms/custom-input.component";
 // import CustomSelect from "../forms/custom-select.component";
@@ -9,8 +10,7 @@ export default function CustomerModal({ toggleCustomerModal }) {
       firstName: "",
     },
     onSubmit: async (values) => {
-      const customer = new Customer(values);
-      await customer.save();
+      await addNewCustomer(values, "/customers");
     },
   });
 

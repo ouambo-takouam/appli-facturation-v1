@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Icon } from "../global/icon.component";
 import NavigationItem from "./navigation-item.component";
-import { getNavigationPathData } from "@utils/navigation";
+import { getNavigationPathData } from "@lib/utils";
 
 export default function SideNavigation() {
   const [active, setActive] = useState(false);

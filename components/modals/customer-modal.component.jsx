@@ -5,9 +5,12 @@ import CustomInput from "../forms/custom-input.component";
 
 export default function CustomerModal({ toggleCustomerModal }) {
   const formik = useFormik({
-    initialValues: {},
-    onSubmit: (values) => {
-      console.log(values);
+    initialValues: {
+      firstName: "",
+    },
+    onSubmit: async (values) => {
+      const customer = new Customer(values);
+      await customer.save();
     },
   });
 
